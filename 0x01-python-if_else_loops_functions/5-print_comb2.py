@@ -4,4 +4,3 @@ for item in range(0, 100):
         print(f'{item // 10}{item % 10}')
     else:
         print(f'{item // 10}{item % 10}', end=', ')
-

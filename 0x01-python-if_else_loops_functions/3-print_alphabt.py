@@ -4,4 +4,3 @@ while ascii_number <= 122:
     if chr(ascii_number) != 'q' and chr(ascii_number) != 'e':
         print(chr(ascii_number), end='')
     ascii_number += 1
-
