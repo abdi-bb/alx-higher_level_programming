@@ -2,7 +2,7 @@
 #include "lists.h"
 
 /**
- * insert_node - Inserts a number into absorted singly linked list.
+ * insert_node - Inserts a number into a sorted singly linked list.
  * @head: A pointer to the head of the list.
  * @number: The number to insert.
  *
