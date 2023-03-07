@@ -2,6 +2,7 @@
 def uppercase(str):
     for item in str:
         ord(item)
-        item = item - 32
+        if item >= 97:
+            item = item - 32
         print('{}'.format(chr(item)), end='')
     print('')
