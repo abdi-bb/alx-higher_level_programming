@@ -5,4 +5,4 @@ if __name__ = '__main__':
     funcs = dir(hidden_4)
     for items in funcs:
         if funcs[:2] != '__':
-            print(funcs)
+            print(items)
