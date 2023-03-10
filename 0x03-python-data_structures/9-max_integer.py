@@ -16,3 +16,7 @@ def max_integer(my_list=[]):
     for k in my_list:
         new_list.append(k)
     return new_list[len(my_list) - 1]
+
+
+if __name__ == '__main__':
+    max_integer(my_list=[])
