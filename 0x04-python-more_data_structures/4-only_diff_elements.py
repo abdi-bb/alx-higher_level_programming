@@ -5,4 +5,4 @@ def only_diff_elements(set_1, set_2):
 
 
 if __name__ == '__main__':
-    only_diff_elements(set_1, set_2=)
+    only_diff_elements(set_1, set_2)
