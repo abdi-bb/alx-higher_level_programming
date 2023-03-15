@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
     best_key = None
-    best_value = float('-inf')  # initialize to negative infinity
+    best_value = float('-inf')
     for key, value in a_dictionary.items():
         if isinstance(value, int) and value > best_value:
             best_key = key
