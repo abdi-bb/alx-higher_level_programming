@@ -5,3 +5,7 @@ def safe_print_integer(value):
         return True
     except (TypeError, ValueError):
         return False
+
+
+if __name__ == '__main__':
+    safe_print_integer(value)
