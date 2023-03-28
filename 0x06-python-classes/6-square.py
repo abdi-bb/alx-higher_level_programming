@@ -21,19 +21,19 @@ class Square:
         '''Get the current size of the square.'''
         return (self.__size)
 
-    @property
-    def position(self):
-        '''Gets the current position of the square.'''
-        return (self.__position)
-
     @size.setter
     def size(self, value):
-        '''Get/set the current size of the square.'''
+        '''Set the current size of the square.'''
         if not isinstance(value, int):
             raise TypeError('size must be an integer')
         elif value < 0:
             raise ValueError('size must be >= 0')
         self.__size = value
+
+    @property
+    def position(self):
+        '''Get the current position of the square.'''
+        return (self.__position)
 
     @position.setter
     def position(self, value):
