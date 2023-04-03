@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def nqueens(N):
     if not isinstance(N, int):
         print("N must be a number")
@@ -24,6 +25,7 @@ def nqueens(N):
                 solve(board+[(row, col)], row+1)
 
     solve([], 0)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
