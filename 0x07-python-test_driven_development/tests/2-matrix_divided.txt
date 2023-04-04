@@ -1,0 +1,85 @@
+The ``2-matrix_divided`` module
+======================
+
+Importing the function from the module:
+	>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+Checking for passing None as matrix:
+	 >>> matrix_divided(None, 1)
+	 Traceback (most recent call last):
+         ...
+         TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Checking for passing None as div:
+	 >>> matrix = [[1, 2, 3], [4, 5, 6]]
+	 >>> matrix_divided(matrix, None)
+	 Traceback (most recent call last):
+         ...
+	 TypeError: div must be a number
+
+Checking for matrix as list:
+	 >>> matrix = "Hello"
+	 >>> matrix_divided(matrix, 1)
+	 Traceback (most recent call last):
+         ...
+         TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Checking for list of mixed list and non-list items:
+	 >>> matrix = [[1, 2, 3], "Hello"]
+	 >>> matrix_divided(matrix, 1)
+	 Traceback (most recent call last):
+         ...
+         TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Checking for uneven matrix:
+	 >>> matrix = [[1, 2, 3], [4, 5, 6, 7]]
+	 >>> matrix_divided(matrix, 3)
+	 Traceback (most recent call last):
+         ...
+	 TypeError: Each row of the matrix must have the same size
+
+Checking for div as non-number:
+	 >>> matrix = [[1, 2, 3], [4, 5, 6]]
+	 >>> matrix_divided(matrix, "A")
+	 Traceback (most recent call last):
+         ...
+         TypeError: div must be a number
+
+Checking for division by zero:
+	 >>> matrix_divided(matrix, 0)
+	 Traceback (most recent call last):
+	 ...
+	 ZeroDivisionError: division by zero
+
+Checking for negative numerators:
+	 >>> matrix = [[-1, -2, -3], [-4, -5, -6]]
+	 >>> matrix_divided(matrix, 3)
+	 [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+         >>> matrix
+         [[-1, -2, -3], [-4, -5, -6]]
+
+Checking for div as negative:
+	 >>> matrix = [[1, 2, 3], [4, 5, 6]]
+         >>> matrix_divided(matrix, -3)
+         [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+         >>> matrix
+         [[1, 2, 3], [4, 5, 6]]
+
+Checking for empty matrix:
+	 >>> matrix = []
+	 >>> matrix_divided(matrix, 1)
+	 []
+	 >>> matrix
+	 []
+
+Checking for 1xn matrix:
+	 >>> matrix = [[1, 2, 3]]
+	 >>> matrix_divided(matrix, 2)
+	 [[0.5, 1.0, 1.5]]
+	 >>> matrix
+	 [[1, 2, 3]]
+
+Checking for division with infinity in numerator:
+	 >>> matrix = [[1, float('inf'), 3], [4, 5, 6]]
+	 >>> matrix_divided(matrix, 1)
+         [[1.0, inf, 3.0], [4.0, 5.0, 6.0]]
