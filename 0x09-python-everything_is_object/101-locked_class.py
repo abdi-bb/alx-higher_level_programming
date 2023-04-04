@@ -14,7 +14,6 @@ class LockedClass:
 
         '''
         if ((name != 'first_name') and (not hasattr(self, 'first_name'))):
-            raise AttributeError("'LockedClass' object has no attribute '{
-                    }'".format(name))
+            raise AttributeError(f"\'LockedClass\' object has no attribute \'{name}\'")
         else:
             self.__dict__[name] = value
