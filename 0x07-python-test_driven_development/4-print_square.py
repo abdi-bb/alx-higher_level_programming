@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+
+'''
+module name: '4-print_square'
+functions contained:
+    'print_square(size)
+'''
+
+
 def print_square(size):
     '''Prints a square with char #
 
@@ -17,4 +25,3 @@ def print_square(size):
     for i in range(size):
         [print('#', end='') for j in range(size)]
         print()
-    print()
