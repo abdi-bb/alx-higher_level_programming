@@ -36,7 +36,7 @@ Checking for positive ints:
 	 ####
 	 ####
 	 ####
-	 <BLANKLINE>
+
 	 >>> print_square(10)
 	 ##########
 	 ##########
@@ -48,7 +48,6 @@ Checking for positive ints:
 	 ##########
 	 ##########
 	 ##########
-	 <BLANKLINE>
 
 Checking for negative ints:
 	 >>> print_square(-1)
