@@ -19,10 +19,16 @@ Checking for passing None as first name:
          TypeError: first_name must be a string
 
 Checking for wrong type as first name:
-         >>> say_my_name(1, "Hello")
+	 >>> say_my_name(1, "Hello")
          Traceback (most recent call last):
          ...
          TypeError: first_name must be a string
+
+First name= string, last name= not string:
+	 >>> say_my_name('Hello', 1)
+	 Traceback (most recent call last):
+	 	...
+	 TypeError: last_name must be a string
 
 Checking for normal use:
 	 >>> say_my_name("Hello", "World")
