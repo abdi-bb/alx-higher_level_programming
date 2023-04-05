@@ -66,9 +66,10 @@ class Rectangle:
     def __str__(self):
         '''Returns printable string representation of the rectangle.'''
         rectangle_list = ['']
+        sym = self.print_symbol
         if self.__width != 0 and self.__height != 0:
             for i in range(self.__height):
-                [rectangle_list.append('#') for j in range(self.__width)]
+                [rectangle_list.append(sym) for j in range(self.__width)]
                 if i != self.__height - 1:
                     rectangle_list.append('\n')
         return ''.join(rectangle_list)
