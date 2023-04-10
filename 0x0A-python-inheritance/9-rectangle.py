@@ -7,15 +7,7 @@ Contained functions or subclass:
 '''
 
 
-class BaseGeometry:
-    '''Represents BaseGeometry'''
-
-    def integer_validator(self, name, value):
-        '''Validates value'''
-        if not isinstance(value, int):
-            raise TypeError(f'{name} must be an integer')
-        if value <= 0:
-            raise ValueError(f'{name} must be greater than 0')
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
@@ -28,10 +20,10 @@ class Rectangle(BaseGeometry):
             width (int): width of rectangle
             height (int): height of rectangle
         '''
-        self.__width = width
-        self.__height = height
         self.integer_validator('width', width)
         self.integer_validator('height', height)
+        self.__width = width
+        self.__height = height
 
     def area(self):
         '''returns area of Rectangle'''
