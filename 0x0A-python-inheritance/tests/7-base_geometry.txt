@@ -26,4 +26,19 @@ Test for negative value:
 		...
 	ValueError: distance must be greater than 0
 
+Test for name of an empty string:
+	>>> bg.integer_validator('', 5)
+
+Test for float value:
+	>>> bg.integer_validator('name', 5.0)
+	Traceback (most recent call last):
+		...
+	TypeError: name must be an integer
+
+Test for None as a value:
+	>>> bg.integer_validator('name', None)
+	Traceback (most recent call last):
+		...
+	TypeError: name must be an integer
+
 
