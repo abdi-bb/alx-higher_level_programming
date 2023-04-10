@@ -16,4 +16,6 @@ def lookup(obj):
     Return:
         list of attributes and methods of object obj
     '''
-    return sorted([attr for attr in dir(obj) if not callable(getattr(obj, attr))] + [method for method in dir(obj) if callable(getattr(obj, method))])
+    return sorted([attr for attr in dir(obj) if not callable(
+        getattr(obj, attr))] + [method for method in dir(
+            obj) if callable(getattr(obj, method))])
