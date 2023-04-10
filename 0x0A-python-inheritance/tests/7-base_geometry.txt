@@ -1,0 +1,19 @@
+Tests for module '7-base_geometry':
+=======================================
+
+Import the module:
+	>>> integer_validator = __import__('7-base_geometry').BaseGeometry.integer_validator
+
+Test for normal value:
+	>>> integer_validator("my_int", 12)
+
+Test for string value:
+	>>> integer_validator("name", "John")
+
+Test for 0 value:
+	>>> integer_validator("age", 0)
+
+Test for negative value:
+	>>> integer_validator("distance", -4)
+
+
