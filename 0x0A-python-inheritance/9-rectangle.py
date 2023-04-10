@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''
-Module name: '8-rectangle'
+Module name: '9-rectangle'
 Contained functions or subclass:
     subclass Rectangle
 '''
