@@ -2,18 +2,28 @@ Tests for module '7-base_geometry':
 =======================================
 
 Import the module:
-	>>> integer_validator = __import__('7-base_geometry').BaseGeometry.integer_validator
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
 
 Test for normal value:
-	>>> integer_validator("my_int", 12)
+	>>> bg.integer_validator("my_int", 12)
 
 Test for string value:
-	>>> integer_validator("name", "John")
+	>>> bg.integer_validator("name", "John")
+	Traceback (most recent call last):
+		...
+	TypeError: name must be an integer
 
 Test for 0 value:
-	>>> integer_validator("age", 0)
+	>>> bg.integer_validator("age", 0)
+	Traceback (most recent call last):
+		...
+	ValueError: age must be greater than 0
 
 Test for negative value:
-	>>> integer_validator("distance", -4)
+	>>> bg.integer_validator("distance", -4)
+	Traceback (most recent call last):
+		...
+	ValueError: distance must be greater than 0
 
 
