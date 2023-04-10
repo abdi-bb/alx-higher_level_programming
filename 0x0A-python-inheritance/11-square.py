@@ -2,8 +2,9 @@
 
 '''
 Module name: '11-square'
-Contained functions and subclasses:
+Contained functions or subclass:
     subclass Rectangle
+    subclass Square
 '''
 
 
@@ -11,16 +12,17 @@ Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    '''Represents class Square'''
+    '''Represen a Square'''
 
     def __init__(self, size):
-        '''instantiates new square'''
-        self.integer_validator('size', size)
+        '''instantiates a square'''
         self.__size = size
-
-    def __str__(self):
-        return f'[Square] {size}/{size}'
+        self.integer_validator('size', size)
 
     def area(self):
-        '''returns area of square'''
+        '''returns area of a square'''
         return self.__size**2
+
+    def __str__(self):
+        '''returns the required string description'''
+        return f'[Square] {self.__size}/{self.__size}'
