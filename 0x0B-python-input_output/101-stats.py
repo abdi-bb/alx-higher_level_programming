@@ -7,30 +7,34 @@ Functions:
 '''
 
 import sys
+import signal
 
-total_size = 0
-status_codes = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
-line_count = 0
 
-try:
-    for line in sys.stdin:
-        words = line.split()
-        if len(words) > 6:
-            status_code = words[8]
-            file_size = words[9]
-            total_size += int(file_size)
-            if status_code in status_codes:
-                status_codes[status_code] += 1
-            line_count += 1
-        if line_count % 10 == 0:
-            print("File size: {}".format(total_size))
-            for code, count in sorted(status_codes.items()):
-                if count > 0:
-                    print("{}: {}".format(code, count))
-            print("")
+def signal_handler(signal, frame):
+    print_stats()
+    sys.exit(0)
 
-except KeyboardInterrupt:
-    print("File size: {}".format(total_size))
-    for code, count in sorted(status_codes.items()):
-        if count > 0:
-            print("{}: {}".format(code, count)))
+def print_stats():
+    total_file_size = sum(file_sizes)
+    print(f"File size: {total_file_size}")
+    for status_code in sorted(status_codes.keys()):
+        print(f"{status_code}: {status_codes[status_code]}")
+
+file_sizes = []
+status_codes = {}
+
+signal.signal(signal.SIGINT, signal_handler)
+
+for i, line in enumerate(sys.stdin):
+    try:
+        ip_address, _, _, _, status_code, file_size = line.strip().split()
+        file_size = int(file_size)
+        file_sizes.append(file_size)
+        status_codes[status_code] = status_codes.get(status_code, 0) + 1
+        if i % 10 == 9:
+            print_stats()
+    except ValueError:
+        pass
+
+print_stats()
+
