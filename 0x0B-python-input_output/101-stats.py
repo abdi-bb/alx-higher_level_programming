@@ -8,41 +8,34 @@ Functions:
 
 
 import sys
-import signal
 
-
-def signal_handler(sig, frame):
-    print_stats()
-    sys.exit(0)
-
-
-signal.signal(signal.SIGINT, signal_handler)
+status_counts = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
 
 total_file_size = 0
-status_code_counts = {
-        200: 0,
-        301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0
-        }
 
+line_count = 0
 
-def print_stats():
-    print(f"File size: {total_file_size}")
-    for code, count in sorted(status_code_counts.items()):
-        if count > 0:
-            print(f"{code}: {count}")
+try:
+    for line in sys.stdin:
+        parts = line.split()
 
+        file_size = int(parts[-1])
+        status_code = parts[-2]
 
-for i, line in enumerate(sys.stdin):
-    ip, _, _, status_code, file_size = line.split()[0],
-    line.split()[8], line.split()[10],
-    line.split()[11], line.split()[12]
-    total_file_size += int(file_size)
-    status_code_counts[int(status_code)] += 1
-    if (i+1) % 10 == 0:
-        print_stats()
+        total_file_size += file_size
+        if status_code in status_counts:
+            status_counts[status_code] += 1
+
+        line_count += 1
+
+        if line_count % 10 == 0:
+            print(f"File size: {total_file_size}")
+            for code in sorted(status_counts.keys()):
+                if status_counts[code] > 0:
+                    print(f"{code}: {status_counts[code]}")
+
+except KeyboardInterrupt:
+    print(f"\nFile size: {total_file_size}")
+    for code in sorted(status_counts.keys()):
+        if status_counts[code] > 0:
+            print(f"{code}: {status_counts[code]}")
