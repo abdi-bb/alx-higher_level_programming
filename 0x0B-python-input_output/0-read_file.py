@@ -13,9 +13,6 @@ def read_file(filename=""):
     Args:
         filename (str): the file to be opened
     '''
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            data = f.read()
-            print(data)
-    except Exception:
-        pass
+    with open(filename, 'r', encoding='utf-8') as f:
+        data = f.read()
+        print(data)
