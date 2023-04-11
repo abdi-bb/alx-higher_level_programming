@@ -19,4 +19,4 @@ def to_json_string(my_obj):
     Returns:
         A JSON string representing the object.
     '''
-    return json.dumps(my_obj, sort_keys=True)
+    return json.dumps(my_obj)
