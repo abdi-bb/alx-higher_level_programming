@@ -9,7 +9,6 @@ funcs:
 '''
 
 
-
 def to_json_string(my_obj):
     '''
     Returns the JSON representation of a Python object.
@@ -21,4 +20,3 @@ def to_json_string(my_obj):
         A JSON string representing the object.
     '''
     return json.dumps(my_obj, sort_keys=True)
-
