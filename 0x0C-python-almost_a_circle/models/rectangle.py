@@ -86,10 +86,10 @@ class Rectangle(Base):
 
     def display(self):
         '''prints the Rectangle's area with '#' character'''
-        for i in range(self.__height):
-            for j in range(self.__width):
-                print('#', end='')
+        for j in range(self.__y):
             print()
+        for i in range(self.__height):
+            print(' ' * self.__x + '#' * self.__width)
 
     def __str__(self):
         '''overriding the __str__ method'''
