@@ -15,31 +15,67 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         '''instantiation of Rectangle'''
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
-    def get_width(self):
+    @property
+    def width(self):
+        '''returns the width'''
         return self.__width
 
-    def set_width(self):
-        self.__width = width
+    @width.setter
+    def width(self, value):
+        '''sets the width'''
+        if not isinstance(value, int):
+            raise TypeError('width must be an integer')
+        elif value <= 0:
+            raise ValueError('width must be > 0')
+        else:
+            self.__width = value
 
-    def get_height(self):
+    @property
+    def height(self):
+        '''Returns the height attr'''
         return self.__height
 
-    def set_height(self):
-        self.__height = height
+    @height.setter
+    def height(self, value):
+        '''sets height attribute'''
+        if not isinstance(value, int):
+            raise TypeError('height must be an integer')
+        elif value <= 0:
+            raise ValueError('height must be > 0')
+        else:
+            self.__height = value
 
-    def get_x(self):
+    @property
+    def x(self):
+        '''gets the attribute x'''
         return self.__x
 
-    def set_x(self):
-        self.__x = x
+    @x.setter
+    def x(self, value):
+        '''sets x'''
+        if not isinstance(value, int):
+            raise TypeError('x must be an integer')
+        elif value < 0:
+            raise ValueError('x must be >= 0')
+        else:
+            self.__x = value
 
-    def get_y(self):
+    @property
+    def y(self):
+        '''grabs y'''
         return self.__y
 
-    def set_y(self):
-        self.__y = y
+    @y.setter
+    def y(self, value):
+        '''sets y'''
+        if not isinstance(value, int):
+            raise TypeError('y must be an integer')
+        elif value < 0:
+            raise ValueError('y must be >= 0')
+        else:
+            self.__y = value
