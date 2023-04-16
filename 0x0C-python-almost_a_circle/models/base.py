@@ -44,7 +44,28 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         '''Returns the list of JSON string representation json_string'''
-        if json_string is None or len(json_string) == 0:
-            return '[]'
+        if json_string is None or json_string == '':
+            return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        '''Returns an instance with all attributes already set'''
+        if cls.__name__ == 'Rectangle':
+            dummy =cls(1,1)
+        elif cls.__name__ == 'Square':
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        '''Returns a list of instances.'''
+        filename = cls.__name__ + '.json'
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                my_list = cls.from_json_string(f.read())
+                return [cls.create(**d) for d in my_list]
+        except FileNotFoundError:
+            return []
