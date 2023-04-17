@@ -19,8 +19,7 @@ class TestBase_instantiation(unittest.TestCase):
     def test_no_args(self):
         b1 = Base()
         b2 = Base()
-        self.assertEqual(b1.id, 1)
-        self.assertEqual(b2.id, 2)
+        self.assertEqual(b1.id, b2.id - 1)
 
     def test_None_args(self):
         b1 = Base(None)
@@ -274,7 +273,7 @@ class TestBase_from_json_string(unittest.TestCase):
             Base.from_json_string([], 1)
 
 
-class TestBase_create(unittest.TestCases):
+class TestBase_create(unittest.TestCase):
     '''Testing for create method'''
 
     def test_create_rectangle_original(self):

@@ -43,7 +43,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         '''Returns the list of JSON string representation json_string'''
-        if json_string is None or json_string == '':
+        if json_string is None or json_string == "[]":
             return []
         return json.loads(json_string)
 
@@ -53,7 +53,7 @@ class Base:
         if dictionary and dictionary != {}:
             if cls.__name__ == 'Rectangle':
                 dummy = cls(1, 1)
-            elif cls.__name__ == 'Square':
+            else:
                 dummy = cls(1)
             dummy.update(**dictionary)
             return dummy
@@ -61,10 +61,10 @@ class Base:
     @classmethod
     def load_from_file(cls):
         '''Returns a list of instances.'''
-        filename = cls.__name__ + '.json'
+        filename = str(cls.__name__) + '.json'
         try:
             with open(filename, 'r', encoding='utf-8') as f:
-                dict_list = cls.from_json_string(f.read())
+                dict_list = Base.from_json_string(f.read())
                 return [cls.create(**d) for d in dict_list]
-        except (IOError, FileNotFoundError):
+        except IOError:
             return []

@@ -9,6 +9,7 @@ unit test for:
 import unittest
 from models.square import Square
 from models.base import Base
+import sys
 import os
 import io
 
@@ -175,7 +176,6 @@ class TestSquare_x(unittest.TestCase):
     def test_dict_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Square(1, {"a": 1, "b": 2}, 2)
-
     def test_bool_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Square(1, True)
