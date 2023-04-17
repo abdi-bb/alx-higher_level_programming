@@ -27,8 +27,7 @@ class Base:
         '''Returns the JSON string representation of list_dictionaries'''
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return '[]'
-        else:
-            return json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -46,18 +45,18 @@ class Base:
         '''Returns the list of JSON string representation json_string'''
         if json_string is None or json_string == '':
             return []
-        else:
-            return json.loads(json_string)
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
         '''Returns an instance with all attributes already set'''
-        if cls.__name__ == 'Rectangle':
-            dummy =cls(1,1)
-        elif cls.__name__ == 'Square':
-            dummy = cls(1)
-        dummy.update(**dictionary)
-        return dummy
+        if dictionary and dictionary != {}:
+            if cls.__name__ == 'Rectangle':
+                dummy = cls(1, 1)
+            elif cls.__name__ == 'Square':
+                dummy = cls(1)
+            dummy.update(**dictionary)
+            return dummy
 
     @classmethod
     def load_from_file(cls):
@@ -65,7 +64,7 @@ class Base:
         filename = cls.__name__ + '.json'
         try:
             with open(filename, 'r', encoding='utf-8') as f:
-                my_list = cls.from_json_string(f.read())
-                return [cls.create(**d) for d in my_list]
-        except FileNotFoundError:
+                dict_list = cls.from_json_string(f.read())
+                return [cls.create(**d) for d in dict_list]
+        except (IOError, FileNotFoundError):
             return []
