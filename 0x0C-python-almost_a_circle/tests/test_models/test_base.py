@@ -10,6 +10,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+import os
 
 
 class TestBase_instantiation(unittest.TestCase):
@@ -143,6 +144,22 @@ class TestBase_to_json_string(unittest.TestCase):
 
 class TestBase_save_to_file(unittest.TestCase):
     '''Testing for save_to_file method'''
+
+    @classmethod
+    def tearDown(self):
+        """Delete any created files."""
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Base.json")
+        except IOError:
+            pass
 
     def test_save_to_file_one_rectangle(self):
         r = Rectangle(10, 7, 2, 8, 5)
