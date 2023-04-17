@@ -328,6 +328,18 @@ class TestBase_create(unittest.TestCase):
 class TestBase_load_from_file(unittest.TestCase):
     '''Testing for load_from_file method'''
 
+    @classmethod
+    def tearDown(self):
+        '''At the end deletes created file'''
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+
     def test_load_from_file_first_rectangle(self):
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 5, 6, 2)
