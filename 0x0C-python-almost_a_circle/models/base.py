@@ -7,6 +7,7 @@ Class names:
 '''
 
 import json
+import io
 
 
 class Base:
@@ -25,8 +26,8 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         '''Returns the JSON string representation of list_dictionaries'''
-        if list_dictionaries is None or len(list_dictionaries) == 0:
-            return '[]'
+        if list_dictionaries is None or len(list_dictionaries) == []:
+            return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -35,10 +36,10 @@ class Base:
         filename = cls.__name__ + '.json'
         with open(filename, 'w', encoding='utf-8') as f:
             if list_objs is None:
-                f.write('[]')
+                f.write("[]")
             else:
                 dict_list = [obj.to_dictionary() for obj in list_objs]
-                f.write(cls.to_json_string(dict_list))
+                f.write(Base.to_json_string(dict_list))
 
     @staticmethod
     def from_json_string(json_string):
@@ -63,7 +64,7 @@ class Base:
         '''Returns a list of instances.'''
         filename = str(cls.__name__) + '.json'
         try:
-            with open(filename, 'r', encoding='utf-8') as f:
+            with open(filename, 'r') as f:
                 dict_list = Base.from_json_string(f.read())
                 return [cls.create(**d) for d in dict_list]
         except IOError:
