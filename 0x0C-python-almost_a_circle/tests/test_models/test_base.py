@@ -24,7 +24,7 @@ class TestBase_instantiation(unittest.TestCase):
     def test_None_args(self):
         b1 = Base(None)
         b2 = Base(None)
-        self.assertEqual(b1.id, b2.id -1)
+        self.assertEqual(b1.id, b2.id - 1)
 
     def test_a_arg(self):
         b1 = Base(89)
@@ -65,13 +65,13 @@ class TestBase_instantiation(unittest.TestCase):
         self.assertEqual('name', Base('name').id)
 
     def test_list_id(self):
-        self.assertEqual([1, 2, 3], Base([1,2,3]).id)
+        self.assertEqual([1, 2, 3], Base([1, 2, 3]).id)
 
     def test_tuple_id(self):
-        self.assertEqual((1, 2, 3), Base((1,2,3)).id)
+        self.assertEqual((1, 2, 3), Base((1, 2, 3)).id)
 
     def test_set_id(self):
-        self.assertEqual({1, 2, 3}, Base({1,2,3}).id)
+        self.assertEqual({1, 2, 3}, Base({1, 2, 3}).id)
 
     def test_frozenset_id(self):
         self.assertEqual(frozenset({1, 2, 3}), Base(frozenset({1, 2, 3})).id)

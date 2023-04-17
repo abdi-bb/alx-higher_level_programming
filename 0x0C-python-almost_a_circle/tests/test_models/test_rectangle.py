@@ -176,7 +176,7 @@ class TestRectangle_width(unittest.TestCase):
 
 class TestRectangle_height(unittest.TestCase):
     '''Testing for the instantiation of height'''
-    
+
     def test_None_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(1, None)
@@ -421,7 +421,8 @@ class TestRectangle_area(unittest.TestCase):
         self.assertEqual(8, Rectangle(4, 2, 0, 0, 89).area())
 
     def test_area_large(self):
-        self.assertEqual(999999999999998999000000000000001, Rectangle(999999999999999, 999999999999999999, 0, 0, 89).area)
+        self.assertEqual(999999999999998999000000000000001, Rectangle(
+            999999999999999, 999999999999999999, 0, 0, 89).area)
 
     def test_area_change(self):
         r = Rectangle(3, 1, 0, 0, 89)
@@ -438,7 +439,7 @@ class TestRectangle_area(unittest.TestCase):
 class TestRectangle_stdout(unittest.TestCase):
     '''Testing __str__ and display for Class Rectangle'''
 
-     @staticmethod
+    @staticmethod
     def capture_stdout(rect, method):
         """Captures and returns text printed to stdout.
         Args:
@@ -786,6 +787,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         r = Rectangle(10, 2, 4, 1, 2)
         with self.assertRaises(TypeError):
             r.to_dictionary(1)
+
 
 if __name__ == "__main__":
     unittest.main()
