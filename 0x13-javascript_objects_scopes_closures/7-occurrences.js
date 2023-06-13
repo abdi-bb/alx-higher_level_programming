@@ -8,6 +8,4 @@ exports.nbOccurences = function (list, searchElement) {
     }
   }
   return count;
-};
-
-module.exports = exports.nbOccurences;
+}
