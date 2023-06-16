@@ -8,25 +8,26 @@ module: '0-select_states'
 import MySQLdb
 import sys
 
-mysql_user = sys.argv[1]
-mysql_passwd = sys.argv[2]
-db_name = sys.argv[3]
+if __name__ == '__main__':
+    mysql_user = sys.argv[1]
+    mysql_passwd = sys.argv[2]
+    db_name = sys.argv[3]
 
-db = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=mysql_user,
-        passwd=mysql_passwd,
-        db=db_name
-        )
+    db = MySQLdb.connect(
+            host='localhost',
+            port=3306,
+            user=mysql_user,
+            passwd=mysql_passwd,
+            db=db_name
+            )
 
-cursor = db.cursor()
-query = "SELECT * FROM states ORDER BY id ASC"
-cursor.execute(query)
+    cursor = db.cursor()
+    query = "SELECT * FROM states ORDER BY id ASC"
+    cursor.execute(query)
 
-rows = cursor.fetchall()
-for row in rows:
-    print(row)
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
 
-cursor.close()
-db.close
+    cursor.close()
+    db.close
