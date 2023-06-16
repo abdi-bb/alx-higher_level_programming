@@ -5,7 +5,6 @@ module: '0-select_states'
     Selects all states from a database
 '''
 
-
 import MySQLdb
 import sys
 
