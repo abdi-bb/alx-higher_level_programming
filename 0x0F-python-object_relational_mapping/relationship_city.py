@@ -4,7 +4,7 @@ module: 'model_city'
 Class: City
 '''
 
-from model_state import Base
+from relationship_state import Base, State
 from sqlalchemy import Column, Integer, String, ForeignKey
 
 
