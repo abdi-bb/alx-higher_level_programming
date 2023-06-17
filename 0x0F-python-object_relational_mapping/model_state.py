@@ -14,10 +14,10 @@ Base = declarative_base()
 class State(Base):
     '''Represents class State
     Attributes:
-        __table__ (str): table name of the class
+        __tablename__ (str): table name of the class
         id (int): state id
         name (str): state name
     '''
-    __table__ = 'states'
+    __tablename__ = 'states'
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
