@@ -11,4 +11,4 @@ if __name__ == '__main__':
     data = {'email': argv[2]}
     response = requests.post(argv[1], data=data)
 
-    print(f'Your email is: {argv[2]}')
+    print(response.text)
