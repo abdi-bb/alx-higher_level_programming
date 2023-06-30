@@ -1,22 +1,30 @@
-#!/usr/bin/env bash
-'''
-Module: '6-peak'
-'''
+#!/usr/bin/python3
+"""
+This module contains the function find_peak(list_of_integers)
+"""
 
 
 def find_peak(list_of_integers):
-    '''Returns the peak from a list'''
-
+    """
+    Finds a peak in a list of unsorted integers.
+    """
     if not list_of_integers:
         return None
-    if len(list_of_integers) == 1:
+
+    n = len(list_of_integers)
+
+    if n == 1:
         return list_of_integers[0]
-    if len(list_of_integers) == 2:
+
+    if n == 2:
         return max(list_of_integers)
-    mid = len(list_of_integers) // 2
-    if list_of_integers[mid] > list_of_integers[mid - 1] and\
-            list_of_integers[mid] > list_of_integers[mid + 1]:
-        return list_of_integers[mid]
-    if list_of_integers[mid + 1] > list_of_integers[mid]:
+
+    mid = n // 2
+
+    if list_of_integers[mid] < list_of_integers[mid - 1]:
+        return find_peak(list_of_integers[:mid])
+
+    if list_of_integers[mid] < list_of_integers[mid + 1]:
         return find_peak(list_of_integers[mid + 1:])
-    return find_peak(list_of_integers[:mid])
+
+    return list_of_integers[mid]
