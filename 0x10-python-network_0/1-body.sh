@@ -1,3 +1,3 @@
 #!/bin/bash
 # Bash script only body of a 200 status code response
-curl -sL -w "%{http_code}" "$1"
+curl -sL "$1"
