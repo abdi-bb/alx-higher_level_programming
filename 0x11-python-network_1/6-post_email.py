@@ -9,7 +9,6 @@ from sys import argv
 
 if __name__ == '__main__':
     data = {'email': argv[2]}
-    with requests.post(argv[1], data=data) as response:
-        body = response.text
+    response = requests.post(argv[1], data=data)
 
     print(f'Your email is: {argv[2]}')
