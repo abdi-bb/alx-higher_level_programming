@@ -4,14 +4,19 @@ const request = require('request');
 
 const url = process.argv[2];
 
-request(url, (err, res, bod) => {
-  if (!err) {
-    const completedTasks = {};
-    bod = JSON.parse(bod);
+request(url, (err, res, body) => {
+  if (err) {
+    console.error('Error:', err.message);
+    return;
+  }
 
-    for (let i = 0; i < bod.length; ++i) {
-      const userId = bod[i].userId;
-      const completed = bod[i].completed;
+  try {
+    const completedTasks = {};
+    const data = JSON.parse(body);
+
+    for (let i = 0; i < data.length; ++i) {
+      const userId = data[i].userId;
+      const completed = data[i].completed;
 
       if (completed && !completedTasks[userId]) {
         completedTasks[userId] = 0;
@@ -21,5 +26,7 @@ request(url, (err, res, bod) => {
     }
 
     console.log(completedTasks);
+  } catch (error) {
+    console.error('Error parsing JSON response:', error.message);
   }
 });
