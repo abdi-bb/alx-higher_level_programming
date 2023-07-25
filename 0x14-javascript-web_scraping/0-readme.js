@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const fs = require('fs')
+const fs = require('fs');
 
 if (process.argv.length !== 3) {
   console.log('Usage: node 0-readme.js <file_path>');
