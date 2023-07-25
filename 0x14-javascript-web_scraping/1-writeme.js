@@ -8,7 +8,6 @@ const stringContent = process.argv[3];
 fs.writeFile(filePath, stringContent, 'utf8', (err) => {
   if (err) {
     console.error(err);
-    return;
+    process.exit(1);
   }
-  console.log(`Content has been written to ${filePath}`);
 });
